@@ -16,7 +16,7 @@ class validate:
                  params: Optional[GenericSchema] = None,
                  headers: Optional[GenericSchema] = None,
                  json: Optional[GenericSchema] = None) -> None:
-        if (segments is None) and (params is None) and (json is None):
+        if (segments is None) and (params is None) and (headers is None) and (json is None):
             raise ValueError("At least one argument must be provided")
         self._segments = segments
         self._params = params
@@ -38,12 +38,14 @@ class validate:
             errors += self._validate(dict(request.query), self._params)
         if self._headers:
             # fix: headers could have multiple values for the same key
-            # fix: headers are case-insensitive
             errors += self._validate(dict(request.headers), self._headers)
         if self._json:
-            # fix: json could be invalid
-            payload = await request.json()
-            errors += self._validate(payload, self._json)
+            try:
+                payload = await request.json()
+            except BaseException as e:
+                errors += [repr(e)]
+            else:
+                errors += self._validate(payload, self._json)
         return errors
 
     def _create_error_response(self, request: Request, errors: List[str]) -> Response:

@@ -1,2 +1,3 @@
 aiohttp>=3.5,<4.0
+multidict>=4.5,<7.0
 valera>=1.5,<2.0
