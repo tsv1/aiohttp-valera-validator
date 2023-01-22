@@ -1,5 +1,10 @@
 # aiohttp-valera-validator
 
+[![Codecov](https://img.shields.io/codecov/c/github/nikitanovosibirsk/aiohttp-valera-validator/master.svg?style=flat-square)](https://codecov.io/gh/nikitanovosibirsk/aiohttp-valera-validator)
+[![PyPI](https://img.shields.io/pypi/v/aiohttp-valera-validator.svg?style=flat-square)](https://pypi.python.org/pypi/aiohttp-valera-validator/)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/aiohttp-valera-validator?style=flat-square)](https://pypi.python.org/pypi/aiohttp-valera-validator/)
+[![Python Version](https://img.shields.io/pypi/pyversions/aiohttp-valera-validator.svg?style=flat-square)](https://pypi.python.org/pypi/aiohttp-valera-validator/)
+
 ## Installation
 
 ```shell
