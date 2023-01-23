@@ -48,7 +48,7 @@ class validate:
                 errors += self._validate(payload, self._json)
         return errors
 
-    def _create_error_response(self, request: Request, errors: List[str]) -> Response:
+    def create_error_response(self, request: Request, errors: List[str]) -> Response:
         return json_response({"errors": errors}, status=HTTPStatus.BAD_REQUEST)
 
     def __call__(self, fn: HandlerType) -> HandlerType:
@@ -56,6 +56,6 @@ class validate:
         async def wrapped(request: Request) -> Response:
             errors = await self._validate_request(request)
             if len(errors) > 0:
-                return self._create_error_response(request, errors)
+                return self.create_error_response(request, errors)
             return await fn(request)
         return wrapped
